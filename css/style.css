@@ -41,3 +41,6 @@ background-position: 0 -256px;
 .fivestar_s {
 	background-position: 0 -320px;
 }
+
+#map-canvas { height: 100% }
+#map-custom-address {display:none}
