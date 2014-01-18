@@ -5,8 +5,7 @@ CinemasApp.CinemaController = Ember.ObjectController.extend({
         minimizeMaximize: function () {
 
             this.set('isMinimized', !this.isMinimized);
-
-            return showStr;
+            return ;
         }
     }
 })

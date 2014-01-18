@@ -42,10 +42,10 @@
 
                 {{#if isMinimized}}
                   <span> {{ format-markdown-minimized description}} </span>
-                  <span {{action "minimizeMaximize" on="doubleClick"}} >more...</span>
+                  <span {{action "minimizeMaximize" on="click"}} >more...</span>
                 {{else}}
                   <span> {{ format-markdown description}} </span>
-                  <span {{action "minimizeMaximize" on="doubleClick"}} >hide...</span>
+                  <span {{action "minimizeMaximize" on="click"}} >hide...</span>
                 {{/if}}
               </td>
              </tr>
