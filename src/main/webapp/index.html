@@ -14,6 +14,7 @@
 		</script>
 	</head>
 	<body>
+	
 	<!-- NAVBAR -->
 	<script type="text/x-handlebars">
 		<nav class="navbar navbar-default" role="navigation">
@@ -38,8 +39,8 @@
           <table class='table'>
             {{#each itemController='cinema'}}
             <tr>
-			        <td><img {{bind-attr src="photoUrl"}}  {{bind-attr alt="title"}} /></td>
-              <td style="position:relative">
+				<td><img {{bind-attr src="photoUrl"}}  {{bind-attr alt="title"}} /></td>
+				<td style="position:relative">
                 <a id="{{id}}" href="#">{{#link-to 'detail' this}}{{title}} {{/link-to}}</a>
 
                 {{#if isMinimized}}
@@ -72,12 +73,24 @@
   		<table class='table'>
   			<tr>
   				<td><img {{bind-attr src=photoUrl}}  {{bind-attr alt="title"}} /></td>
-  				<td><strong>{{description}}</strong>
-				<div id="_trailer" class="no_print" style="align: center;">
+  				<td>
+					<div>{{description}}</div>
+					<div id="_trailer" class="no_print" style="align: center;">
 						<div id="__trailer" style="align: center;">
 							<embed type="application/x-shockwave-flash" src="http://afisha.tut.by/_skin/by/js/trailers/player.swf" width="420" height="280" style="undefined" id="playerID" name="playerID" quality="high" allowfullscreen="true" allowscriptaccess="always" {{bind-attr flashvars="trailer"}}>
 						</div>
 						<br>
+					</div>
+					<div class="mov-schedule">
+						<table class="table">
+							<tbody>
+								  <tr>
+									<td>
+									<a href="javascript:null" onclick="CinemasApp.GMap.showCinema('Родина');">Родина</a></td>
+									<td>12, 13</td>
+								  </tr>
+							</tbody>
+						  </table>
 					</div>
 				</td>
 				<td>
@@ -95,8 +108,6 @@
   		</table>
 		{{vk-widget id}}
   	</script>
-
-
 
 	<script src="js/libs/jquery-1.10.2.js"></script>
 	<script src="js/libs/handlebars-1.1.2.js"></script>
