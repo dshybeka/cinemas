@@ -64,9 +64,16 @@
   	</script>
 
   	<script type="text/x-handlebars" id="detail">
-	    <h1>{{title}}</h1>
-	    <strong>{{description}}</strong>
-	    <div id="vk_comments"></div>
+  		<h1>{{title}}</h1>
+  		<table class='table'>
+  			<tr>
+  				<td><img {{bind-attr src=photoUrl}}  {{bind-attr alt="title"}} /></td>
+  				<td><strong>{{description}}</strong></td>
+  			</tr>
+  			<tr>
+  				<td colspan="2" align="center"><div id="vk_comments"></div></td>
+  			</tr>
+  		</table>
   	</script>
 
 	<!-- Put this div tag to the place, where the Comments block will be
