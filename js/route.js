@@ -1,7 +1,7 @@
 CinemasApp.Router.map(function () {
   this.resource('about');
   this.resource('cinemas', { path: '/' });
-  this.resource('detail', { path: ':post_id' });
+  this.resource('detail', { path: ':cinema_id' });
 });
 
 CinemasApp.CinemasRoute = Ember.Route.extend({
@@ -14,8 +14,8 @@ CinemasApp.CinemasRoute = Ember.Route.extend({
   }
 });
 
-CinemasApp.PostRoute = Ember.Route.extend({
+CinemasApp.CinemaRoute = Ember.Route.extend({
   model: function(params) {
-    return posts.findBy('id', params.post_id);
+    return cinemas.findBy('id', params.cinema_id);
   }
 });
