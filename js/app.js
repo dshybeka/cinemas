@@ -1,0 +1,1 @@
+window.Cinemas = Ember.Application.create();
