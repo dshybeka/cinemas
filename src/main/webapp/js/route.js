@@ -10,6 +10,7 @@ CinemasApp.CinemasRoute = Ember.Route.extend({
     //    console.log("start");
     //    var textArea = $(data).find(".filmImage").find("img").attr('src');
 	//    var rating = $(data).find(".rating_s").attr('class');
+	//    var trailer = $(data).find("#__trailer").find("embed").attr('flashvars');
     // });
     return this.store.find('cinema');
   }

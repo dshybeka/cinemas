@@ -72,7 +72,14 @@
   		<table class='table'>
   			<tr>
   				<td><img {{bind-attr src=photoUrl}}  {{bind-attr alt="title"}} /></td>
-  				<td><strong>{{description}}</strong></td>
+  				<td><strong>{{description}}</strong>
+				<div id="_trailer" class="no_print" style="align: center;">
+						<div id="__trailer" style="align: center;">
+							<embed type="application/x-shockwave-flash" src="http://afisha.tut.by/_skin/by/js/trailers/player.swf" width="420" height="280" style="undefined" id="playerID" name="playerID" quality="high" allowfullscreen="true" allowscriptaccess="always" {{bind-attr flashvars="trailer"}}>
+						</div>
+						<br>
+					</div>
+				</td>
 				<td>
 					<div id="map-custom-address">
 						<label for="customAddress">Where are you?</label>
