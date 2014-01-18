@@ -14,6 +14,7 @@
 		</script>
 	</head>
 	<body>
+	
 	<!-- NAVBAR -->
 	<script type="text/x-handlebars">
 		<nav class="navbar navbar-default" role="navigation">
@@ -38,8 +39,8 @@
           <table class='table'>
             {{#each itemController='cinema'}}
             <tr>
-			        <td><img {{bind-attr src="photoUrl"}}  {{bind-attr alt="title"}} /></td>
-              <td style="position:relative">
+				<td><img {{bind-attr src="photoUrl"}}  {{bind-attr alt="title"}} /></td>
+				<td style="position:relative">
                 <a id="{{id}}" href="#">{{#link-to 'detail' this}}{{title}} {{/link-to}}</a>
 
                 {{#if isMinimized}}
@@ -72,7 +73,20 @@
   		<table class='table'>
   			<tr>
   				<td><img {{bind-attr src=photoUrl}}  {{bind-attr alt="title"}} /></td>
-  				<td><strong>{{description}}</strong></td>
+  				<td>
+					<div>{{description}}</div>
+					<div class="mov-schedule">
+						<table class="table">
+							<tbody>
+								  <tr>
+									<td>
+									<a href="javascript:null" onclick="CinemasApp.GMap.showCinema('Родина');">Родина</a></td>
+									<td>12, 13</td>
+								  </tr>
+							</tbody>
+						  </table>
+					</div>
+				</td>
 				<td>
 					<div id="map-custom-address">
 						<label for="customAddress">Where are you?</label>
@@ -88,8 +102,6 @@
   		</table>
 		{{vk-widget id}}
   	</script>
-
-
 
 	<script src="js/libs/jquery-1.10.2.js"></script>
 	<script src="js/libs/handlebars-1.1.2.js"></script>
