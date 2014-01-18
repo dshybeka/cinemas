@@ -1,6 +1,10 @@
 window.CinemasApp = Ember.Application.create();
 
-CinemasApp.ApplicationAdapter = DS.FixtureAdapter.extend();
+ CinemasApp.ApplicationAdapter = DS.FixtureAdapter.extend();
+
+// CinemasApp.ApplicationAdapter = DS.LSAdapter.extend({
+//   namespace: 'cinemaapp'
+// });
 
 var showdown = new Showdown.converter();
 Ember.Handlebars.helper('format-markdown', function(input) {
