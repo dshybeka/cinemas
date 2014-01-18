@@ -31,11 +31,21 @@
       <div class="row">
         <div class="col-xs-4">
           <table class='table'>
-            {{#each model}}
+            {{#each itemController='cinema'}}
             <tr>
-			<td><img {{bindAttr src="photoUrl"}}  {{bindAttr alt="title"}} /></td><td>
-                <a id="{{id}}" href="#"><strong>{{title}}</strong></a><span> {{ format-markdown description}} </span>
-            </td></tr>
+			        <td><img {{bind-attr src="photoUrl"}}  {{bind-attr alt="title"}} /></td>
+              <td>
+                <a id="{{id}}" href="#"><strong>{{title}}</strong></a>
+
+                {{#if isMinimized}}
+                  <span> {{ format-markdown-minimized description}} </span>
+                  <span {{action "minimizeMaximize" on="doubleClick"}} >more...</span>
+                {{else}}
+                  <span> {{ format-markdown description}} </span>
+                  <span {{action "minimizeMaximize" on="doubleClick"}} >hide...</span>
+                {{/if}}
+              </td>
+             </tr>
             {{/each}}
           </table>
         </div>
@@ -62,6 +72,7 @@
 
   <script src="js/route.js"></script>
   <script src="js/models/cinema.js"></script>
+    <script src="js/contollers/cinema_controller.js"></script>
 
   </body>
 </html>
