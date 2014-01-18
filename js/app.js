@@ -1,3 +1,3 @@
-window.Cinemas = Ember.Application.create();
+window.CinemasApp = Ember.Application.create();
 
-Cinemas.ApplicationAdapter = DS.FixtureAdapter.extend();
+CinemasApp.ApplicationAdapter = DS.FixtureAdapter.extend();
