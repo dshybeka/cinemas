@@ -15,7 +15,9 @@
 	this.targetLocation=null;
 	this.customMarker=null;
 	this.cinemas=[];
-
+	
+	this.cinemasMap = {"Октябрь":"Кастрычнiк", "Чырвоная зорка":"Чырвоная зорка", "Родина":"Kinovideoprokat Mogilevskoe Gosudarstvennoe Predprijatie", "Космос":"Kosmos"};
+	
 	this.initialize = function(mapDiv) {
 		var mapOptions = {
 			zoom: 12,
@@ -60,6 +62,8 @@
 	}
 	
 	this.showCinemas = function () {
+		this.cinemas = [];
+
 		var request = {
 			location: this.mogilev,
 			radius: 2000,
@@ -91,14 +95,22 @@
 	}
 
 	this.showCinema = function (cinemaName) {
-		for (var index in this.cinemas) {
-			var cinema = this.cinemas[index];
-			if (cinema.name == cinemaName) {
-				this.map.setCenter(cinema.marker.position);
-				this.map.setZoom(16);
-				this.targetLocation = cinema.marker.position;
-				this.calcRoute();
-				break;
+		
+		var mapName = null;
+		if (cinemaName in this.cinemasMap) {
+			mapName = this.cinemasMap[cinemaName];
+		}
+		
+		if (mapName != null) {
+			for (var index in this.cinemas) {
+				var cinema = this.cinemas[index];
+				if (cinema.name == mapName) {
+					this.map.setCenter(cinema.marker.position);
+					this.map.setZoom(16);
+					this.targetLocation = cinema.marker.position;
+					this.calcRoute();
+					break;
+				}
 			}
 		}
 	}
@@ -166,9 +178,9 @@
 				  // "property."
 				  travelMode: google.maps.TravelMode['DRIVING']
 			  };
-			  dirService.route(request, function(response, status) {
+			  this.dirService.route(request, function(response, status) {
 				if (status == google.maps.DirectionsStatus.OK) {
-				  dirDisplay.setDirections(response);
+				  CinemasApp.GMap.dirDisplay.setDirections(response);
 				}
 			 });
 		}
