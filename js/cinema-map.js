@@ -33,8 +33,7 @@
 		if(navigator.geolocation) {
 			navigator.geolocation.getCurrentPosition(function(position) {
 				var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-				CinemasApp.GMap.userLocation = pos;
-				CinemasApp.GMap.map.setCenter(pos);
+				CinemasApp.GMap.showUserLocation(pos);
 			}, function() {
 			  CinemasApp.GMap.handleNoGeolocation();
 			});
@@ -116,9 +115,7 @@
 		this.clearCustomMarker();
 		this.decodeAddress($("#map-custom-address-input").val(), 
 			function(position) {
-				CinemasApp.GMap.map.setCenter(position);
-				CinemasApp.GMap.customMarker = CinemasApp.GMap.createMarker(position);
-				CinemasApp.GMap.userLocation = position;
+				CinemasApp.GMap.showUserLocation(position);
 				CinemasApp.GMap.calcRoute();
 			});
 	}
@@ -128,6 +125,19 @@
 			this.customMarker.setMap(null);
 		}
 	}
+	
+	this.showUserLocation = function (position) {
+		this.map.setCenter(position);
+		this.userLocation = position;
+		this.customMarker = this.createUserMarker(position, "You are here");
+		
+		google.maps.event.addListener(this.customMarker, 'click', function() {
+			CinemasApp.GMap.infowindow.setContent("You are here");
+			CinemasApp.GMap.infowindow.open(CinemasApp.GMap.map, this);
+		});
+		this.infowindow.setContent("You are here");
+		this.infowindow.open(this.map, this.customMarker);
+	}
 		
 	this.createMarker= function(location) {
 		return new google.maps.Marker({
@@ -136,7 +146,16 @@
 		});
 	}
 
-		
+	this.createUserMarker= function(location, name) {
+		return new google.maps.Marker({
+				map: this.map,
+				position: location,
+				title: name,
+				draggable:false,
+				animation: google.maps.Animation.DROP
+		});
+	}
+
 	this.calcRoute= function() {
 		if (this.userLocation != null && this.targetLocation != null) {
 			  var request = {
