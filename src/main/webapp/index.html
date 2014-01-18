@@ -75,6 +75,12 @@
   				<td><img {{bind-attr src=photoUrl}}  {{bind-attr alt="title"}} /></td>
   				<td>
 					<div>{{description}}</div>
+					<div id="_trailer" class="no_print" style="align: center;">
+						<div id="__trailer" style="align: center;">
+							<embed type="application/x-shockwave-flash" src="http://afisha.tut.by/_skin/by/js/trailers/player.swf" width="420" height="280" style="undefined" id="playerID" name="playerID" quality="high" allowfullscreen="true" allowscriptaccess="always" {{bind-attr flashvars="trailer"}}>
+						</div>
+						<br>
+					</div>
 					<div class="mov-schedule">
 						<table class="table">
 							<tbody>
