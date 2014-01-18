@@ -8,4 +8,7 @@ CinemasApp.CinemaController = Ember.ObjectController.extend({
             return ;
         }
     }
-})
+});
+
+CinemasApp.CinemasController = Ember.ArrayController.extend();
+

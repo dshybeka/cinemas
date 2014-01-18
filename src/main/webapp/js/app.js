@@ -8,7 +8,12 @@ Ember.Handlebars.helper('format-markdown', function(input) {
 });
 
 Ember.Handlebars.helper('format-markdown-minimized', function(input) {
+  if (input != undefined) {
     return new Handlebars.SafeString(showdown.makeHtml(input.substr(0,150) + "..."));
+  } else {
+    return;
+  }
+
 });
 
 Ember.Handlebars.helper("vk-widget", function (page_id) {

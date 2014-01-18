@@ -4,35 +4,40 @@ CinemasApp.Router.map(function () {
   this.resource('detail', { path: ':cinema_id' });
 });
 
-CinemasApp.CinemasController = Ember.ArrayController.extend();
-
 CinemasApp.CinemasRoute = Ember.Route.extend({
   model: function () {
 
-      var model = [];
+      var models = [];
       var photoUrl = "";
-
+    var model = {};
     $.get( "http://images.afisha.tut.by/rss/film/Mogilev.rss").done(function( data ) {
 
        $(data).find("item").each(function () { // or "item" or whatever suits your feed
+
            var el = $(this);
 
-           console.log("full ended ");
+           console.log("full ended ss");
 
            photoUrl = el.find("link").text();
            model.title = el.find("title").text();
+           console.log("model.title " + model.title);
            model.description = el.find("description").text();
-
+// too slow for now
+          //   var model = {};
+          // $.get( photoUrl + "city=Mogilev").done(function( data ) {
+          //    console.log("start");
+          //    model.photoUrl = $(data).find(".filmImage").find("img").attr('src');
+          // });
+              models.push(model);
         });
     });
 
-    //   var model = {};
-    $.get( photoUrl + "city=Mogilev").done(function( data ) {
-       console.log("start");
-       model.photoUrl = $(data).find(".filmImage").find("img").attr('src');
-    });
 
-    return model;
+    for(var i = 0; i < models.length; ++i) {
+      console.log("models " + models[i].title);
+    }
+
+    return models;
   }
 });
 
