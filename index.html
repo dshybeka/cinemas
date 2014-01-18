@@ -47,7 +47,8 @@
                   <span> {{ format-markdown description}} </span>
                   <span {{action "minimizeMaximize" on="click"}} >hide...</span>
                 {{/if}}
-				<div style="bottom:5px; position: absolute;">Рейтинг: <div style="display:inline-block">5 star</div></div>
+				<div style="bottom:5px; position: absolute;">Рейтинг: 
+				<div {{bind-attr class="raiting"}}/></div>
               </td>
              </tr>
             {{/each}}

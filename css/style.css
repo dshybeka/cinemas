@@ -10,3 +10,34 @@
 .nav .active {
   background-color: #e7e7e7;
 }
+.rating_s {
+	display: inline-block;
+	width: 80px;
+	height: 16px;
+	padding: 0;
+	list-style: none;
+	clear: both;
+	position: relative;
+	background: url(../img/star-matrix.gif) no-repeat 0 0;
+	overflow: hidden;
+}
+
+.onestar_s {
+background-position: 0 -64px;
+}
+
+.twostar_s {
+background-position: 0 -128px;
+}
+
+.threestar_s {
+background-position: 0 -192px;
+}
+
+.fourstar_s {
+background-position: 0 -256px;
+}
+
+.fivestar_s {
+	background-position: 0 -320px;
+}
