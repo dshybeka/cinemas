@@ -2,13 +2,15 @@
 <html>
 	<head>
 		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 		<title>M Cinemas</title>
 		<link rel="stylesheet" href="css/style.css">
 		<link rel="stylesheet" href="css/bootstrap.css">
 		<!-- Put this script tag to the <head> of your page -->
 		<script type="text/javascript" src="http://vk.com/js/api/openapi.js?105"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
 		<script type="text/javascript">
-			VK.init({apiId: 4127863, onlyWidgets: true});
+			VK.init({apiId: 4128709, onlyWidgets: true});
 		</script>
 	</head>
 	<body>
@@ -37,7 +39,7 @@
             {{#each itemController='cinema'}}
             <tr>
 			        <td><img {{bind-attr src="photoUrl"}}  {{bind-attr alt="title"}} /></td>
-              <td>
+              <td style="position:relative">
                 <a id="{{id}}" href="#">{{#link-to 'detail' this}}{{title}} {{/link-to}}</a>
 
                 {{#if isMinimized}}
@@ -47,6 +49,8 @@
                   <span> {{ format-markdown description}} </span>
                   <span {{action "minimizeMaximize" on="click"}} >hide...</span>
                 {{/if}}
+				<div style="bottom:5px; position: absolute;">Рейтинг: 
+				<div {{bind-attr class="raiting"}}/></div>
               </td>
              </tr>
             {{/each}}
@@ -68,31 +72,43 @@
   		<table class='table'>
   			<tr>
   				<td><img {{bind-attr src=photoUrl}}  {{bind-attr alt="title"}} /></td>
-  				<td><strong>{{description}}</strong></td>
+  				<td><strong>{{description}}</strong>
+				<div id="_trailer" class="no_print" style="align: center;">
+						<div id="__trailer" style="align: center;">
+							<embed type="application/x-shockwave-flash" src="http://afisha.tut.by/_skin/by/js/trailers/player.swf" width="420" height="280" style="undefined" id="playerID" name="playerID" quality="high" allowfullscreen="true" allowscriptaccess="always" {{bind-attr flashvars="trailer"}}>
+						</div>
+						<br>
+					</div>
+				</td>
+				<td>
+					<div id="map-custom-address">
+						<label for="customAddress">Where are you?</label>
+						<input type="text" id="map-custom-address-input" name="customAddress"/>
+						<input type="button" value="Find Direction" onclick="CinemasApp.GMap.findCustomAddress()">
+					</div>
+					<div id="map-canvas" style="width: 400px; height: 400px;">
+				</td>
   			</tr>
   			<tr>
-  				<td colspan="2" align="center"><div id="vk_comments"></div></td>
+  				<td colspan="3" align="center"><div id="vk_comments"></div></td>
   			</tr>
   		</table>
+		{{vk-widget id}}
   	</script>
 
-	<!-- Put this div tag to the place, where the Comments block will be
-	<div id="vk_comments"></div> -->
-	<script type="text/javascript">
-		VK.Widgets.Comments("vk_comments", {limit: 10, width: "496", attach: "*"});
-	</script>
+
 
 	<script src="js/libs/jquery-1.10.2.js"></script>
 	<script src="js/libs/handlebars-1.1.2.js"></script>
 	<script src="js/libs/ember-1.3.1.js"></script>
 	<script src="js/libs/ember-data.js"></script>
-  <script src="js/libs/showdown.min.js"></script>
+	<script src="js/libs/showdown.min.js"></script>
 
 	<script src="js/app.js"></script>
-
-  <script src="js/route.js"></script>
-  <script src="js/models/cinema.js"></script>
-    <script src="js/contollers/cinema_controller.js"></script>
-
+	<script src="js/route.js"></script>
+	<script src="js/models/cinema.js"></script>
+	<script src="js/contollers/cinema_controller.js"></script>
+	<script src="js/cinema-map.js"></script>
+	
   </body>
 </html>
