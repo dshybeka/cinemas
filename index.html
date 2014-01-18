@@ -37,7 +37,7 @@
             {{#each model}}
             <tr>
 			<td><img {{bindAttr src="photoUrl"}}  {{bindAttr alt="title"}} /></td><td>
-                <a {{bindAttr id="id"}} href="#"><strong>{{title}}</strong></a><span> {{ format-markdown description}} </span>
+                {{#link-to 'detail' this}}{{title}} {{/link-to}}<span> {{ format-markdown description}} </span>
             </td></tr>
             {{/each}}
           </table>
@@ -48,11 +48,16 @@
 	</script>
 	
 	<script type="text/x-handlebars" id="about">
-    <div class='about'>
-      About us
-    </div>
+    	<div class='about'>
+      		About us
+    	</div>
+  	</script>
 
-  </script>
+  	<script type="text/x-handlebars" id="detail">
+	    <h1>{{title}}</h1>
+	    <strong>{{description}}</strong>
+	    <div id="vk_comments"></div>
+  	</script>
 
 	<!-- Put this div tag to the place, where the Comments block will be
 	<div id="vk_comments"></div> -->
