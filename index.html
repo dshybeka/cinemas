@@ -27,20 +27,27 @@
 
   <script type="text/x-handlebars" data-template-name="cinemas" >
 
-    <section id="cinemasapp">
-      <h1>Something is here!</h1>
-      <ul>
-        {{#each}}
-          <li><strong> {{title}} </strong> </br> <span> {{ format-markdown description}} </span> <img {{bindAttr src="photoUrl"}}  {{bindAttr alt="title"}} />
-           </li>
-        {{/each}}
-      </ul>
-    </section>
+	<div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-4">
+          <table class='table'>
+            {{#each model}}
+            <tr>
+			<td><img {{bindAttr src="photoUrl"}}  {{bindAttr alt="title"}} /></td><td>
+                <a id="{{id}}" href="#"><strong>{{title}}</strong></a><span> {{ format-markdown description}} </span>
+            </td></tr>
+            {{/each}}
+          </table>
+        </div>
+		<div class="col-xs-8">
+		</div>
+      </div>
+    </div>
 
 	</script>
 
-	<!-- Put this div tag to the place, where the Comments block will be -->
-	<div id="vk_comments"></div>
+	<!-- Put this div tag to the place, where the Comments block will be
+	<div id="vk_comments"></div> -->
 	<script type="text/javascript">
 		VK.Widgets.Comments("vk_comments", {limit: 10, width: "496", attach: "*"});
 	</script>
