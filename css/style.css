@@ -1,0 +1,12 @@
+.nav li {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  color: #555;
+}
+
+.nav .active {
+  background-color: #e7e7e7;
+}
