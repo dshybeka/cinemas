@@ -1,4 +1,5 @@
 CinemasApp.Router.map(function () {
+  this.resource('about');
   this.resource('cinemas', { path: '/' });
 });
 

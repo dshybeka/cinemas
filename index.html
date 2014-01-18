@@ -13,38 +13,46 @@
 	</head>
 	<body>
 	<!-- NAVBAR -->
+	<script type="text/x-handlebars">
 		<nav class="navbar navbar-default" role="navigation">
 			<div class="navbar-header">
 				<a class="navbar-brand" href="#">Cinemas</a>
 			</div>
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Today Film</a></li>
-					<li><a href="#">About</a></li>
+					<li class="active">{{#link-to 'cinemas'}}Today films{{/link-to}}</li>
+					<li>{{#link-to 'about'}}About{{/link-to}}</a></li>
 				</ul>
 			</div>
 		</nav>
+		{{outlet}}
+	</script>
 
   <script type="text/x-handlebars" data-template-name="cinemas" >
 
 	<div class="container-fluid">
       <div class="row">
-        <div class="col-xs-4">
+        <div class="col-xs-12">
           <table class='table'>
             {{#each model}}
             <tr>
 			<td><img {{bindAttr src="photoUrl"}}  {{bindAttr alt="title"}} /></td><td>
-                <a id="{{id}}" href="#"><strong>{{title}}</strong></a><span> {{ format-markdown description}} </span>
+                <a {{bindAttr id="id"}} href="#"><strong>{{title}}</strong></a><span> {{ format-markdown description}} </span>
             </td></tr>
             {{/each}}
           </table>
         </div>
-		<div class="col-xs-8">
-		</div>
       </div>
     </div>
 
 	</script>
+	
+	<script type="text/x-handlebars" id="about">
+    <div class='about'>
+      About us
+    </div>
+
+  </script>
 
 	<!-- Put this div tag to the place, where the Comments block will be
 	<div id="vk_comments"></div> -->
