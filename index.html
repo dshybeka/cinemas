@@ -31,7 +31,8 @@
       <h1>Something is here!</h1>
       <ul>
         {{#each}}
-          <li> <strong> {{title}} </strong> </br> <span> {{ format-markdown description}} </span></li>
+          <li><strong> {{title}} </strong> </br> <span> {{ format-markdown description}} </span> <img {{bindAttr src="photoUrl"}}  {{bindAttr alt="title"}} />
+           </li>
         {{/each}}
       </ul>
     </section>
